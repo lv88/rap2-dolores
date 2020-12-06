@@ -74,8 +74,8 @@ export default function LoginForm() {
   const { pathname, hash, search } = router.location
   const handleSubmit = (e?: any) => {
     e && e.preventDefault()
-    if (!email || !password || !captcha) {
-      dispatch(showMessage(`请输入账号、密码、验证码`, MSG_TYPE.WARNING))
+    if (!email || !password ) {
+      dispatch(showMessage(`请输入账号、密码`, MSG_TYPE.WARNING))
     } else {
       dispatch(
         login({ email, password, captcha }, () => {
@@ -139,7 +139,7 @@ export default function LoginForm() {
               />
             </FormControl>
           </ListItem>
-          <ListItem>
+          {/* <ListItem>
             <FormControl fullWidth={true}>
               <InputLabel htmlFor="captcha">验证码</InputLabel>
               <Input
@@ -158,12 +158,12 @@ export default function LoginForm() {
                 }
               />
             </FormControl>
-          </ListItem>
+          </ListItem> */}
           <ListItem className={classes.ctl}>
-            <div className={classes.captchaWrapper} onClick={() => setCaptchaId(Date.now())}>
+            {/* <div className={classes.captchaWrapper} onClick={() => setCaptchaId(Date.now())}>
               <img src={`${serve}/captcha?t=${captchaId}`} className={classes.captcha} alt="captcha" />
               <Refresh />
-            </div>
+            </div> */}
             <div className={classes.buttonWrapper}>
               <Button variant="outlined" color="default" style={{ marginRight: 8 }} onClick={() => dispatch(push('/account/register'))}>注册</Button>
               <Button variant="contained" color="primary" tabIndex={3} onClick={handleSubmit}>登录</Button>
